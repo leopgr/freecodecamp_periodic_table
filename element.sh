@@ -8,5 +8,10 @@ fi
 
 PSQL_COMM="/usr/bin/psql --username=freecodecamp --dbname=periodic_table --tuples-only -c"
 
+function fn_get_element(){
+   ELEM_EXISTS=0 
+
+}
 
 # main
+fn get_element
