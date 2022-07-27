@@ -21,19 +21,19 @@ PSQL_COMM="/usr/bin/psql --username=freecodecamp --dbname=periodic_table --tuple
    
    # check if was provided symbol
    if [ $ELEM_EXISTS -eq 0 ]; then
-      QUERY="select count(*) from elements where symbol='$SCRIPT_PARAM'"
+      QUERY="select count(*) from elements where symbol='${SCRIPT_PARAM^}'"
       ELEM_EXISTS=$($PSQL_COMM "$QUERY")
 
       if [ $ELEM_EXISTS -ne 0 ]; then
-         QUERY="select atomic_number from elements where symbol='$SCRIPT_PARAM'"
+         QUERY="select atomic_number from elements where symbol='${SCRIPT_PARAM^}'"
          ATOMIC_NUMBER=$($PSQL_COMM "$QUERY")
       else
         # check if was provided name
-         QUERY="select count(*) from elements where name='$SCRIPT_PARAM'"
+         QUERY="select count(*) from elements where name='${SCRIPT_PARAM^}'"
          ELEM_EXISTS=$($PSQL_COMM "$QUERY")
 
          if [ $ELEM_EXISTS -ne 0 ]; then
-            QUERY="select atomic_number from elements where name='$SCRIPT_PARAM'"
+            QUERY="select atomic_number from elements where name='${SCRIPT_PARAM^}'"
             ATOMIC_NUMBER=$($PSQL_COMM "$QUERY")
          fi
       fi
