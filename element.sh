@@ -71,6 +71,3 @@ $ELEMENT_NAME has a melting point of $MELTING_POINT celsius and a boiling point 
    else
       echo -e "I could not find that element in the database."
    fi
-
-# main
-fn get_element
