@@ -1,13 +1,14 @@
 #!/bin/bash
 if [ $# -eq 0 ]; then
    echo -e "Please provide an element as an argument."
-   exit 1
+   exit
 else
    SCRIPT_PARAM=$1
 fi
 
 PSQL_COMM="/usr/bin/psql --username=freecodecamp --dbname=periodic_table --tuples-only -c"
 
+   ELEM_EXISTS=0
    re='^[0-9]+$'
    if [[ $SCRIPT_PARAM =~ $re ]] ; then
       # check if was provided atomic_number
