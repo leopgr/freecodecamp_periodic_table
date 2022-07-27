@@ -59,6 +59,13 @@ join elements on elements.atomic_number=properties.atomic_number where elements.
       QUERY="select atomic_mass::REAL from properties where atomic_number=$ATOMIC_NUMBER"
       ATOMIC_MASS=$($PSQL_COMM "$QUERY")
 
+      ATOMIC_NUMBER="$(echo -e "${ATOMIC_NUMBER}" | tr -d '[:space:]')"
+      ELEMENT_NAME="$(echo -e "${ELEMENT_NAME}" | tr -d '[:space:]')"
+      ELEMENT_SYMBOL="$(echo -e "${ELEMENT_SYMBOL}" | tr -d '[:space:]')"
+      ATOMIC_MASS="$(echo -e "${ATOMIC_MASS}" | tr -d '[:space:]')"
+      MELTING_POINT="$(echo -e "${MELTING_POINT}" | tr -d '[:space:]')"
+      BOILING_POINT="$(echo -e "${BOILING_POINT}" | tr -d '[:space:]')"
+
       echo -e "The element with atomic number $ATOMIC_NUMBER is $ELEMENT_NAME ($ELEMENT_SYMBOL). It's a nonmetal, with a mass of $ATOMIC_MASS amu. \
 $ELEMENT_NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
    else
